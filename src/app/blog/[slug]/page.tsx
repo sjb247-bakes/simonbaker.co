@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { use } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { client } from '@/lib/sanity';
 import { urlFor } from '@/lib/sanity';
 import { PortableText } from '@portabletext/react';
@@ -24,6 +25,12 @@ interface Post {
   featuredImage?: any;
   excerpt: string;
   content: any[];
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    keywords?: string[];
+    ogImage?: any;
+  };
 }
 
 const portableTextComponents = {
@@ -89,7 +96,8 @@ export default function PostPage({ params: paramsPromise }: PostPageProps) {
         category,
         featuredImage,
         excerpt,
-        content
+        content,
+        seo
       }`;
 
       try {
@@ -153,6 +161,25 @@ export default function PostPage({ params: paramsPromise }: PostPageProps) {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <Head>
+        <title>{post?.seo?.metaTitle || post?.title} | Simon Baker</title>
+        <meta
+          name="description"
+          content={post?.seo?.metaDescription || post?.excerpt}
+        />
+        {post?.seo?.keywords && (
+          <meta name="keywords" content={post.seo.keywords.join(', ')} />
+        )}
+        {post?.seo?.ogImage && (
+          <meta property="og:image" content={urlFor(post.seo.ogImage).url()} />
+        )}
+        <meta property="og:title" content={post?.seo?.metaTitle || post?.title} />
+        <meta
+          property="og:description"
+          content={post?.seo?.metaDescription || post?.excerpt}
+        />
+      </Head>
+
       {/* Featured Image */}
       {post.featuredImage && (
         <div className="max-w-4xl mx-auto px-4 mb-12">
