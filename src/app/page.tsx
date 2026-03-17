@@ -45,7 +45,7 @@ export default function Home() {
             Simon Baker
           </h1>
           <p className="text-xl md:text-2xl text-zinc-400 mb-8 leading-relaxed">
-            Racing driver. Hypnotherapist. AI builder. Home Renovator. I help
+            Racing driver. Hypnotherapist. Home Renovator. AI builder. I help
             high-performers get out of their own way and smash targets.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
