@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { use } from 'react';
 import Link from 'next/link';
 import { client } from '@/lib/sanity';
 import { urlFor } from '@/lib/sanity';
@@ -9,9 +10,9 @@ import { PortableText } from '@portabletext/react';
 export const dynamic = 'force-dynamic';
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 interface Post {
@@ -72,7 +73,8 @@ const portableTextComponents = {
   },
 };
 
-export default function PostPage({ params }: PostPageProps) {
+export default function PostPage({ params: paramsPromise }: PostPageProps) {
+  const params = use(paramsPromise);
   const [post, setPost] = useState<Post | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
