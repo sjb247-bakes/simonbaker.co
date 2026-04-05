@@ -72,16 +72,15 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Performance */}
             <Link
-              href="/performance"
+              href="/hypnotherapy"
               className="group p-8 border border-zinc-800 hover:border-amber-600 rounded-lg transition-colors bg-black hover:bg-zinc-900"
             >
-              <div className="text-4xl mb-4">🏎️</div>
+              <div className="text-4xl mb-4">🧠</div>
               <h3 className="text-xl font-bold mb-3 group-hover:text-amber-400">
-                Performance
+                Hypnotherapy & Coaching
               </h3>
               <p className="text-zinc-400">
-                Coaching for people who perform under pressure. Racing-tested,
-                science-backed.
+                Clinical hypnotherapy and performance coaching for people who need to perform under pressure.
               </p>
             </Link>
 
@@ -90,7 +89,7 @@ export default function Home() {
               href="/blog"
               className="group p-8 border border-zinc-800 hover:border-amber-600 rounded-lg transition-colors bg-black hover:bg-zinc-900"
             >
-              <div className="text-4xl mb-4">🧠</div>
+              <div className="text-4xl mb-4">✍️</div>
               <h3 className="text-xl font-bold mb-3 group-hover:text-amber-400">
                 Content
               </h3>
@@ -101,7 +100,7 @@ export default function Home() {
 
             {/* Tools */}
             <div className="group p-8 border border-zinc-800 rounded-lg bg-black opacity-50">
-              <div className="text-4xl mb-4">🔬</div>
+              <div className="text-4xl mb-4">📊</div>
               <h3 className="text-xl font-bold mb-3 text-zinc-600">
                 Tools
               </h3>
@@ -167,10 +166,18 @@ export default function Home() {
               <ul className="space-y-2 text-zinc-400">
                 <li>
                   <Link
-                    href="/performance"
+                    href="/hypnotherapy"
                     className="hover:text-white transition-colors"
                   >
-                    Performance
+                    Hypnotherapy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="hover:text-white transition-colors"
+                  >
+                    About
                   </Link>
                 </li>
                 <li>

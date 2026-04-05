@@ -6,22 +6,43 @@ import Link from 'next/link';
 export default function BackNav() {
   const pathname = usePathname();
 
-  // Show back button on all pages except home
-  if (pathname === '/') {
-    return null;
-  }
-
   return (
-    <div className="sticky top-0 z-40 bg-black border-b border-zinc-800">
-      <div className="max-w-6xl mx-auto px-4 py-4">
+    <header className="sticky top-0 z-40 bg-black/95 backdrop-blur border-b border-zinc-800">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-white hover:text-zinc-300 transition-colors text-sm font-medium"
+          className="text-white font-semibold tracking-tight hover:text-amber-400 transition-colors"
         >
-          <span>←</span>
-          <span>Back</span>
+          Simon Baker
         </Link>
+
+        <nav className="flex items-center gap-4 text-sm">
+          <Link
+            href="/hypnotherapy"
+            className={`transition-colors ${pathname === '/hypnotherapy' ? 'text-amber-400' : 'text-zinc-300 hover:text-white'}`}
+          >
+            Hypnotherapy
+          </Link>
+          <Link
+            href="/blog"
+            className={`transition-colors ${pathname.startsWith('/blog') ? 'text-amber-400' : 'text-zinc-300 hover:text-white'}`}
+          >
+            Blog
+          </Link>
+          <Link
+            href="/about"
+            className={`transition-colors ${pathname === '/about' ? 'text-amber-400' : 'text-zinc-300 hover:text-white'}`}
+          >
+            About
+          </Link>
+          <Link
+            href="/book"
+            className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg transition-colors font-medium"
+          >
+            Book
+          </Link>
+        </nav>
       </div>
-    </div>
+    </header>
   );
 }
