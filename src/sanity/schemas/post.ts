@@ -50,6 +50,13 @@ export const postSchema = {
       rows: 3,
     },
     {
+      name: 'noindex',
+      title: 'No Index (Archive)',
+      type: 'boolean',
+      description: 'If true, this post will be excluded from search engines (kept for SEO link juice only)',
+      initialValue: false,
+    },
+    {
       name: 'content',
       title: 'Content',
       type: 'array',
