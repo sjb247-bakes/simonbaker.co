@@ -51,6 +51,33 @@ function isIndexFile(filePath) {
   );
 }
 
+function looksLikeArchive($) {
+  const title = extractTitle($);
+  if (/^\w+\s+\d{1,2},\s+\d{4}\s+\|\s+FastLaneDad$/i.test(title)) return true;
+  if (/^\w+\s+\d{4}\s+\|\s+FastLaneDad$/i.test(title)) return true;
+  const relatedPosts = $('h2.entry-title a[href], h5.entry-title a[href], .post-more a[href]').length;
+  return relatedPosts > 4;
+}
+
+function extractCanonical($) {
+  return (
+    $('link[rel="canonical"]').attr('href') ||
+    $('meta[property="og:url"]').attr('content') ||
+    $('meta[property="twitter:url"]').attr('content') ||
+    ''
+  ).trim();
+}
+
+function canonicalPath(canonical) {
+  if (!canonical) return '';
+  try {
+    const url = new URL(canonical);
+    return url.pathname.toLowerCase();
+  } catch {
+    return canonical.toLowerCase();
+  }
+}
+
 function slugFromPath(filePath) {
   const rel = path.relative(SOURCE_DIR, filePath).replace(/\\/g, '/');
   const parts = rel.split('/').filter(Boolean);
@@ -88,9 +115,28 @@ function deriveDate($, filePath) {
 function extractTitle($) {
   return [
     $('meta[property="og:title"]').attr('content'),
+    $('meta[name="twitter:title"]').attr('content'),
+    $('meta[property="twitter:title"]').attr('content'),
     $('title').first().text(),
     $('h1').first().text(),
+    $('.entry-title').first().text(),
   ].find(Boolean)?.trim() || 'Untitled';
+}
+
+function extractSeo($, title, excerpt) {
+  const metaTitle = (
+    $('meta[property="og:title"]').attr('content') ||
+    $('meta[name="twitter:title"]').attr('content') ||
+    title
+  ).trim();
+  const metaDescription = (
+    $('meta[property="og:description"]').attr('content') ||
+    $('meta[name="description"]').attr('content') ||
+    $('meta[name="twitter:description"]').attr('content') ||
+    excerpt ||
+    title
+  ).replace(/\s+/g, ' ').trim();
+  return { metaTitle, metaDescription };
 }
 
 function extractContent($) {
@@ -161,6 +207,13 @@ async function main() {
     try {
       const html = fs.readFileSync(file, 'utf8');
       const $ = cheerio.load(html);
+      if (looksLikeArchive($)) continue;
+
+      const canonical = extractCanonical($);
+      const canonicalUrlPath = canonicalPath(canonical);
+      if (!canonicalUrlPath.startsWith('/blog/')) continue;
+      if (canonical && /\/(tag|category|author|feed)\//i.test(canonical)) continue;
+
       const title = extractTitle($);
       const paragraphs = extractContent($);
       const slug = slugFromPath(file);
@@ -168,6 +221,7 @@ async function main() {
       const category = categoryFromPath(file);
       const content = toPortableText(paragraphs);
       const excerpt = excerptFromParagraphs(paragraphs) || title;
+      const seo = extractSeo($, title, excerpt);
       const noindex = true;
 
       const doc = {
@@ -180,6 +234,7 @@ async function main() {
         excerpt,
         content,
         noindex,
+        seo,
       };
 
       await client.createOrReplace(doc);

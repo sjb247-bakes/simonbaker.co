@@ -92,7 +92,8 @@ export default function HypnotherapyPage() {
             data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
             className="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors"
           >
-            Book a Free Consultation
+            Book a Call
+       
           </button>
         </div>
       </section>
@@ -137,10 +138,12 @@ export default function HypnotherapyPage() {
             <div className="border-l-4 border-amber-600 pl-8 text-left">
               <div className="flex items-center gap-4 mb-4">
                 <div className="bg-amber-600 text-black w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">1</div>
-                <h3 className="text-2xl font-bold">Free Diagnostic Call</h3>
+                <h3 className="text-2xl font-bold">Diagnostic Call</h3>
+           
+           
               </div>
               <p className="text-zinc-400 text-lg">
-                30 minutes to understand what's going on. We map out the patterns, identify the root causes, and discuss your goals.
+                30 minutes to understand what&apos;s going on. We map out the patterns, identify the root causes, and discuss your goals.
               </p>
             </div>
 
@@ -160,7 +163,7 @@ export default function HypnotherapyPage() {
                 <h3 className="text-2xl font-bold">Real Change</h3>
               </div>
               <p className="text-zinc-400 text-lg">
-                Measurable shifts in how you think, feel, and perform. The changes stick because they're wired into your subconscious.
+                Measurable shifts in how you think, feel, and perform. The changes stick because they&apos;re wired into your subconscious.
               </p>
             </div>
           </div>
@@ -178,7 +181,7 @@ export default function HypnotherapyPage() {
           <div className="space-y-6 text-lg leading-relaxed text-zinc-300">
             <div className="flex items-start gap-4">
               <div className="text-2xl mt-1">🏎️</div>
-              <p><strong>Racing background:</strong> I've driven cars at 180mph. I understand what it means to perform when the stakes are high and everything depends on your mental clarity.</p>
+              <p><strong>Racing background:</strong> I&apos;ve driven cars at 180mph. I understand what it means to perform when the stakes are high and everything depends on your mental clarity.</p>
             </div>
 
             <div className="flex items-start gap-4">
@@ -238,7 +241,7 @@ export default function HypnotherapyPage() {
             <div>
               <h3 className="text-xl font-bold mb-3">How many sessions will I need?</h3>
               <p className="text-zinc-400">
-                It depends on your goals. Simple habit changes might take 2-4 sessions. Performance enhancement or anxiety reduction often takes 6-8 sessions. We'll give you a clear plan after the diagnostic call.
+                It depends on your goals. Simple habit changes might take 2-4 sessions. Performance enhancement or anxiety reduction often takes 6-8 sessions. We&apos;ll give you a clear plan after the diagnostic call.
               </p>
             </div>
 
@@ -252,7 +255,7 @@ export default function HypnotherapyPage() {
             <div>
               <h3 className="text-xl font-bold mb-3">What does a session feel like?</h3>
               <p className="text-zinc-400">
-                Relaxed and focused. Most people describe it as an extremely comfortable relaxation with deep concentration. You're always in control — we never do anything without your consent.
+                Relaxed and focused. Most people describe it as an extremely comfortable relaxation with deep concentration. You&apos;re always in control — we never do anything without your consent.
               </p>
             </div>
           </div>
@@ -264,7 +267,8 @@ export default function HypnotherapyPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to start?</h2>
           <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-            Book your free diagnostic call to see if hypnotherapy can help you achieve what you've been working toward.
+            Book your diagnostic call to see how hypnotherapy can help you achieve what you&apos;ve been working toward, or are currently missing.
+       
           </p>
           <button
             data-cal-link="simonbaker/initial-diagnostic"
@@ -272,7 +276,7 @@ export default function HypnotherapyPage() {
             data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
             className="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors"
           >
-            Book Free Consultation
+            Book a Call
           </button>
         </div>
       </section>

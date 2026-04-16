@@ -30,6 +30,12 @@ export default function BackNav() {
             Blog
           </Link>
           <Link
+            href="/bakes-builds"
+            className={`transition-colors ${pathname.startsWith('/bakes-builds') ? 'text-amber-400' : 'text-zinc-300 hover:text-white'}`}
+          >
+            Bakes Builds
+          </Link>
+          <Link
             href="/about"
             className={`transition-colors ${pathname === '/about' ? 'text-amber-400' : 'text-zinc-300 hover:text-white'}`}
           >

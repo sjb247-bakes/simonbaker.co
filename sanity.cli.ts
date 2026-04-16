@@ -8,6 +8,8 @@ export default defineCliConfig({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '',
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
   },
-  // Studio URL will be https://simonbaker.sanity.studio (no dots allowed in hostname)
+  deployment: {
+    appId: 'acrldq5qddmc8dnfs8jcvpaw',
+  },
   studioHost: 'simonbaker',
 });
