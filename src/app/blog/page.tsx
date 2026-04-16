@@ -12,6 +12,7 @@ const categories = [
   { title: 'Performance', value: 'performance' },
   { title: 'Renovation', value: 'renovation' },
   { title: 'Cars', value: 'cars' },
+  { title: 'Bakes Builds', value: 'builds' },
   { title: 'Blog', value: 'blog' },
 ];
 
@@ -29,6 +30,13 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const categoryParam = new URLSearchParams(window.location.search).get('category');
+    if (categoryParam && categoryParam !== selectedCategory) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [selectedCategory]);
 
   useEffect(() => {
     const fetchPosts = async () => {
